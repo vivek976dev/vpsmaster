@@ -1,6 +1,6 @@
 [Unit]
 Description=VPSMaster Host Management Agent Daemon
-Documentation=https://github.com/vpsmaster/vpsmaster
+Documentation=https://github.com/vivek976dev/vpsmaster
 After=network.target
 
 [Service]
@@ -8,7 +8,7 @@ Type=simple
 User=root
 Group=root
 WorkingDirectory=/opt/vpsmaster/server-agent
-EnvironmentFile=/etc/vpsmaster/vpsmaster.env
+EnvironmentFile=/etc/vivek976dev/vpsmaster.env
 ExecStart=/opt/vpsmaster/venv/bin/uvicorn agent:app --host 127.0.0.1 --port 8001 --workers 2 --log-level info
 Restart=always
 RestartSec=5
