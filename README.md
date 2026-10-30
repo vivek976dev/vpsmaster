@@ -161,7 +161,7 @@ VPSMaster is architected modularly to scale across three tiers:
 Install VPSMaster on a fresh Ubuntu 22.04, 24.04, or 26.04 server in one command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/vpsmaster/vpsmaster/main/installer/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/vivek976dev/vpsmaster/main/installer/install.sh -o install.sh
 sudo bash install.sh
 ```
 
