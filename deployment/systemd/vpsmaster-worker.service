@@ -1,6 +1,6 @@
 [Unit]
 Description=VPSMaster Background Task & Health Scheduler Worker
-Documentation=https://github.com/vpsmaster/vpsmaster
+Documentation=https://github.com/vivek976dev/vpsmaster
 After=network.target vpsmaster-backend.service
 Wants=vpsmaster-backend.service
 
@@ -9,7 +9,7 @@ Type=simple
 User=root
 Group=root
 WorkingDirectory=/opt/vpsmaster/backend
-EnvironmentFile=/etc/vpsmaster/vpsmaster.env
+EnvironmentFile=/etc/vivek976dev/vpsmaster.env
 ExecStart=/opt/vpsmaster/venv/bin/python -m app.workers.scheduler
 Restart=always
 RestartSec=10
