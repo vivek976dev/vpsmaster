@@ -71,7 +71,7 @@ sudo apt install -y git curl wget ufw
 #### Option A: If your GitHub Repository is Public:
 ```bash
 # Clone directly to /opt/vpsmaster
-sudo git clone https://github.com/<your-username>/vpsmaster.git /opt/vpsmaster
+sudo git clone https://github.com/vivek976dev/vpsmaster.git /opt/vpsmaster
 ```
 
 #### Option B: If your GitHub Repository is Private (Using Deploy Key):
@@ -96,7 +96,7 @@ cat ~/.ssh/vpsmaster_deploy.pub
    ```
 4. Clone via SSH:
    ```bash
-   sudo git clone git@github.com:<your-username>/vpsmaster.git /opt/vpsmaster
+   sudo git clone git@github.com:vivek976dev/vpsmaster.git /opt/vpsmaster
    ```
 
 ### Step 1.4: Execute the Automated Production Installer
@@ -112,7 +112,7 @@ sudo bash installer/install.sh
 1. **Verifies Environment**: Detects Ubuntu version (22.04, 24.04, 26.04) and root privileges.
 2. **Installs System Dependencies**: Installs `nginx`, `certbot`, `python3-certbot-nginx`, `python3-venv`, `build-essential`, `ufw`, `fail2ban`.
 3. **Builds Python Virtual Environment**: Sets up `/opt/vpsmaster/venv` and installs FastAPI, SQLAlchemy, Bcrypt, PyOTP, and system libraries.
-4. **Generates Cryptographic Secrets**: Creates 256-bit cryptographically secure keys for JWT and Agent authentication in `/etc/vpsmaster/vpsmaster.env` with `chmod 600`.
+4. **Generates Cryptographic Secrets**: Creates 256-bit cryptographically secure keys for JWT and Agent authentication in `/etc/vivek976dev/vpsmaster.env` with `chmod 600`.
 5. **Initializes Database Schema**: Creates database tables and seeds default Super Administrator account (`admin`).
 6. **Registers Systemd Services**: Installs `vpsmaster-agent.service` (Port 8001) and `vpsmaster-backend.service` (Port 8000).
 7. **Configures Nginx Reverse Proxy**: Creates `/etc/nginx/sites-available/vpsmaster.conf` with SSL on port `8443` and WebSocket `/ws/` support.
