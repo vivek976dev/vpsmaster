@@ -20,10 +20,10 @@ This comprehensive guide details the complete production lifecycle:
 2. Pulling and deploying VPSMaster from GitHub to a clean **Ubuntu Linux VPS** (Ubuntu 22.04, 24.04, or 26.04 LTS) using strictly the Linux Terminal.
 
 ```
-+---------------------------+         Push Code        +---------------------------+
-|   DEVELOPER WORKSTATION   | -----------------------> |    GITHUB REPOSITORY      |
-|  (Git / VS Code / Cursor) |                          | (vpsmaster/vpsmaster.git) |
-+---------------------------+                          +---------------------------+
++---------------------------+         Push Code        +-----------------------------+
+|   DEVELOPER WORKSTATION   | -----------------------> |      GITHUB REPOSITORY      |
+|  (Git / VS Code / Cursor) |                          | (vivek976dev/vpsmaster.git) |
++---------------------------+                          +---------------==------------+
                                                                      |
                                                                      | git clone / git pull
                                                                      v
