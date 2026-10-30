@@ -1,0 +1,24 @@
+[Unit]
+Description=VPSMaster Host Management Agent Daemon
+Documentation=https://github.com/vpsmaster/vpsmaster
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/vpsmaster/server-agent
+EnvironmentFile=/etc/vpsmaster/vpsmaster.env
+ExecStart=/opt/vpsmaster/venv/bin/uvicorn agent:app --host 127.0.0.1 --port 8001 --workers 2 --log-level info
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+
+# Hardening
+ProtectSystem=strict
+ReadWritePaths=/var/www /etc/nginx /etc/letsencrypt /etc/php /etc/cron.d /var/backups /var/log /tmp /etc/vpsmaster
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

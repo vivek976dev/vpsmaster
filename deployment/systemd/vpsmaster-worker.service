@@ -1,0 +1,19 @@
+[Unit]
+Description=VPSMaster Background Task & Health Scheduler Worker
+Documentation=https://github.com/vpsmaster/vpsmaster
+After=network.target vpsmaster-backend.service
+Wants=vpsmaster-backend.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/vpsmaster/backend
+EnvironmentFile=/etc/vpsmaster/vpsmaster.env
+ExecStart=/opt/vpsmaster/venv/bin/python -m app.workers.scheduler
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
