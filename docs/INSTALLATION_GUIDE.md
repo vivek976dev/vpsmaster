@@ -21,7 +21,7 @@ Log into your target Ubuntu server via SSH as `root`:
 
 ```bash
 # Download and execute the official installer
-curl -fsSL https://raw.githubusercontent.com/vpsmaster/vpsmaster/main/installer/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/vivek976dev/vpsmaster/main/installer/install.sh -o install.sh
 chmod +x install.sh
 sudo bash install.sh
 ```
@@ -69,7 +69,7 @@ sudo apt update && sudo apt install -y \
 ### Step 2: Clone Repository
 ```bash
 sudo mkdir -p /opt/vpsmaster
-sudo git clone https://github.com/vpsmaster/vpsmaster.git /opt/vpsmaster
+sudo git clone https://github.com/vivek976dev/vpsmaster.git /opt/vpsmaster
 cd /opt/vpsmaster
 ```
 
