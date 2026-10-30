@@ -1,6 +1,6 @@
 [Unit]
 Description=VPSMaster FastAPI Control Panel API
-Documentation=https://github.com/vpsmaster/vpsmaster
+Documentation=https://github.com/vivek976dev/vpsmaster
 After=network.target vpsmaster-agent.service
 Wants=vpsmaster-agent.service
 
@@ -9,7 +9,7 @@ Type=simple
 User=root
 Group=root
 WorkingDirectory=/opt/vpsmaster/backend
-EnvironmentFile=/etc/vpsmaster/vpsmaster.env
+EnvironmentFile=/etc/vivek976dev/vpsmaster.env
 ExecStart=/opt/vpsmaster/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 4 --proxy-headers
 Restart=always
 RestartSec=3
