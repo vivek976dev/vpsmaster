@@ -1,4 +1,4 @@
-If you uploaded the project via the command line and cannot find the user interface at https://<YOUR-SERVER-IP>:8443, this is typically caused by one of 5 common issues.
+If you uploaded the project via the command line and cannot find the user interface at `https://<YOUR-SERVER-IP>:8443`, this is typically caused by one of 5 common issues.
 
 Step 1: Run Diagnostic Commands on Your VPS
 
