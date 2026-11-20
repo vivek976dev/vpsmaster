@@ -119,6 +119,19 @@ if [ -d "$CURRENT_DIR/backend" ] && [ -d "$CURRENT_DIR/server-agent" ]; then
     rsync -av --exclude '.git' --exclude 'frontend/node_modules' "$CURRENT_DIR/" "$INSTALL_DIR/"
 fi
 
+# Verify backend codebase presence before proceeding
+if [ ! -f "$INSTALL_DIR/backend/requirements.txt" ]; then
+    echo -e "${RED}[ERROR] Required file '$INSTALL_DIR/backend/requirements.txt' was not found.${NC}"
+    echo -e "${YELLOW}Common causes:${NC}"
+    echo -e " 1. The repository was uploaded into a nested subfolder (e.g. /opt/vpsmaster/VPS-Master/)."
+    echo -e " 2. The repository was cloned elsewhere (e.g. ~/vpsmaster) instead of /opt/vpsmaster."
+    echo -e " 3. Only the installer script was transferred rather than the entire project repository."
+    echo -e "\n${BOLD}Quick Fix:${NC}"
+    echo -e " Ensure the complete repository is cloned directly into ${INSTALL_DIR}:"
+    echo -e "   sudo git clone https://github.com/vivek976dev/vpsmaster.git /opt/vpsmaster"
+    exit 1
+fi
+
 # 6. Setup Python Virtual Environment
 echo -e "\n${BLUE}[4/8] Building isolated Python virtual environment...${NC}"
 python3 -m venv "$INSTALL_DIR/venv"
@@ -220,6 +233,21 @@ systemctl enable vpsmaster-agent.service
 systemctl enable vpsmaster-backend.service
 systemctl restart vpsmaster-agent.service
 systemctl restart vpsmaster-backend.service
+
+# Build frontend UI if dist does not exist
+if [ ! -f "$INSTALL_DIR/frontend/dist/index.html" ] && [ -d "$INSTALL_DIR/frontend" ]; then
+    echo -e "\n${BLUE}Building frontend user interface assets...${NC}"
+    if ! command -v npm &>/dev/null; then
+        echo -e "${YELLOW}[INFO] Installing Node.js & npm...${NC}"
+        apt-get install -y --no-install-recommends nodejs npm || true
+    fi
+    if command -v npm &>/dev/null; then
+        (cd "$INSTALL_DIR/frontend" && npm install --legacy-peer-deps && npm run build) || {
+            echo -e "${YELLOW}[WARNING] Automated frontend build failed. You can build it manually later with:${NC}"
+            echo -e "  cd $INSTALL_DIR/frontend && npm install && npm run build"
+        }
+    fi
+fi
 
 # 10. Configure Nginx Reverse Proxy with Self-Signed SSL
 echo -e "\n${BLUE}[8/8] Configuring Nginx reverse proxy with SSL termination...${NC}"
