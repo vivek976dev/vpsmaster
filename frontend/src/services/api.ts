@@ -41,12 +41,17 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   }
 
   if (!response.ok) {
-    let errorDetail = 'Request failed';
+    let errorDetail = `Request failed (${response.status})`;
     try {
-      const errorJson = await response.json();
-      errorDetail = errorJson.detail || JSON.stringify(errorJson);
+      const text = await response.text();
+      try {
+        const errorJson = JSON.parse(text);
+        errorDetail = errorJson.detail || JSON.stringify(errorJson);
+      } catch {
+        errorDetail = text || `Error ${response.status}: ${response.statusText}`;
+      }
     } catch {
-      errorDetail = await response.text();
+      errorDetail = `Error ${response.status}: ${response.statusText}`;
     }
     throw new Error(errorDetail);
   }
