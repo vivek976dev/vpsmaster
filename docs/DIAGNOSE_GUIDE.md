@@ -4,13 +4,15 @@ Step 1: Run Diagnostic Commands on Your VPS
 
 Log into your server terminal via SSH and run these quick checks:
 
-bash
+```bash
 # 1. Check if services and port 8443 are listening
 sudo ss -tulpn | grep -E "8443|8000|8001"
 # 2. Check if the frontend build files actually exist
 ls -la /opt/vpsmaster/frontend/dist
 # 3. Check Nginx error logs
 sudo tail -n 20 /var/log/nginx/error.log
+```
+
 Step 2: Identify and Fix Your Issue
 1. Missing frontend/dist (Most Probable: Nginx gives 404 / 403)
 Cause: In the project .gitignore, line 9 excludes dist/. When you pushed the code to GitHub or cloned it to your server, the frontend/dist build folder was not uploaded. Nginx is configured to serve static files from /opt/vpsmaster/frontend/dist/index.html. If this directory doesn't exist, Nginx cannot serve the UI.
