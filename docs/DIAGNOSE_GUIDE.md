@@ -54,7 +54,7 @@ sudo ufw reload
 ```
 
 4. Browser Self-Signed SSL Certificate Warning
-Cause: The installer generates a self-signed SSL certificate for `https://.` Modern browsers (Chrome, Edge, Safari, Firefox) display a full-page red warning stating:
+Cause: The installer generates a self-signed SSL certificate for `https://`. Modern browsers (Chrome, Edge, Safari, Firefox) display a full-page red warning stating:
 
 "Your connection is not private" `(ERR_CERT_AUTHORITY_INVALID or NET::ERR_CERT_INVALID)`.
 
