@@ -18,7 +18,7 @@ git add .
 git commit -m "feat: Initial commit of VPSMaster Server Control Panel v1.0.0"
 
 # 3. Add remote repository and push
-git remote add origin https://github.com/<your-username>/vpsmaster.git
+git remote add origin https://github.com/vivek976dev/vpsmaster.git
 git push -u origin main
 
 # 4. Optional: Create version release tag
@@ -37,7 +37,7 @@ ssh root@<YOUR-SERVER-IP>
 sudo apt update && sudo apt install -y git curl ufw
 
 # 3. Clone repository to /opt/vpsmaster
-sudo git clone https://github.com/<your-username>/vpsmaster.git /opt/vpsmaster
+sudo git clone https://github.com/vivek976dev/vpsmaster.git /opt/vpsmaster
 
 # 4. Execute production automated installer
 cd /opt/vpsmaster
