@@ -17,8 +17,8 @@ export default function Login() {
   const { login } = useAuth();
   const { theme, toggleTheme } = useTheme();
 
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('Admin@123456');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [totpCode, setTotpCode] = useState('');
   const [requires2FA, setRequires2FA] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -95,7 +95,7 @@ export default function Login() {
                       required
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      placeholder="admin"
+                      placeholder="User Name"
                       className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                     />
                   </div>
@@ -151,12 +151,12 @@ export default function Login() {
           </form>
 
           {/* Quick Demo Credentials Footer */}
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 text-center">
+          {/* <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 text-center">
             <div className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5 font-medium">
               <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
               Default Super Admin: <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-indigo-600 dark:text-indigo-400">admin</code> / <code className="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-indigo-600 dark:text-indigo-400">Admin@123456</code>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
