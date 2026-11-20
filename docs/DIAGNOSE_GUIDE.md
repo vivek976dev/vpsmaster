@@ -17,7 +17,7 @@ Step 2: Identify and Fix Your Issue
 1. Missing frontend/dist (Most Probable: Nginx gives 404 / 403)
 Cause: In the project .gitignore, line 9 excludes dist/. When you pushed the code to GitHub or cloned it to your server, the frontend/dist build folder was not uploaded. Nginx is configured to serve static files from /opt/vpsmaster/frontend/dist/index.html. If this directory doesn't exist, Nginx cannot serve the UI.
 Fix: Build the frontend directly on your server:
-bash
+```bash
 # Install Node.js and npm if not already present
 sudo apt update && sudo apt install -y nodejs npm
 # Build the frontend assets
@@ -28,6 +28,8 @@ sudo npm run build
 ls -la dist/
 sudo systemctl reload nginx
 (Alternative: If you already built it locally, copy your local frontend/dist folder to your VPS using scp -r frontend/dist root@<YOUR-SERVER-IP>:/opt/vpsmaster/frontend/).
+```
+
 2. The Installer Was Not Executed Yet (Browser shows "Connection Refused")
 Cause: Simply cloning or copying files via git clone or scp does not start the background daemons or Nginx.
 Fix: You must run the automated installer script:
