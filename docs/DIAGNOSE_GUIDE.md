@@ -33,10 +33,11 @@ sudo systemctl reload nginx
 2. The Installer Was Not Executed Yet (Browser shows "Connection Refused")
 Cause: Simply cloning or copying files via git clone or scp does not start the background daemons or Nginx.
 Fix: You must run the automated installer script:
-bash
+```bash
 cd /opt/vpsmaster
 sudo chmod +x installer/*.sh
 sudo bash installer/install.sh
+```
 This creates the system services (vpsmaster-backend, vpsmaster-agent), generates SSL certificates, configures Nginx on port 8443, and opens local UFW firewall rules.
 3. Cloud Provider Firewall / Security Group Blocking Port 8443
 Cause: If your VPS is hosted on AWS EC2, DigitalOcean, Oracle Cloud, Hetzner, Linode, or GCP, the provider's external cloud firewall blocks port 8443 by default even if Ubuntu's internal firewall (ufw) has opened it.
@@ -47,18 +48,21 @@ Protocol: TCP
 Port Range: 8443
 Source: 0.0.0.0/0 (Anywhere)
 Ensure local UFW allows it as well:
-bash
+```bash
 sudo ufw allow 8443/tcp
 sudo ufw reload
-4. Browser Self-Signed SSL Certificate Warning
-Cause: The installer generates a self-signed SSL certificate for https://. Modern browsers (Chrome, Edge, Safari, Firefox) display a full-page red warning stating:
+```
 
-"Your connection is not private" (ERR_CERT_AUTHORITY_INVALID or NET::ERR_CERT_INVALID).
+4. Browser Self-Signed SSL Certificate Warning
+Cause: The installer generates a self-signed SSL certificate for `https://.` Modern browsers (Chrome, Edge, Safari, Firefox) display a full-page red warning stating:
+
+"Your connection is not private" `(ERR_CERT_AUTHORITY_INVALID or NET::ERR_CERT_INVALID)`.
 
 Fix:
 Click Advanced (or More Information).
-Click Proceed to <YOUR-SERVER-IP> (unsafe).
+Click Proceed to `<YOUR-SERVER-IP>` (unsafe).
+
 5. Verify the IP Placeholder
-Make sure you replace <YOUR-SERVER-IP> in your browser URL bar with your server's actual public IPv4 address, for example:
-https://123.45.67.89:8443
+Make sure you replace `<YOUR-SERVER-IP>` in your browser URL bar with your server's actual public IPv4 address, for example:
+`https://123.45.67.89:8443`
 (Find your server's public IP from the server terminal with curl -4 ifconfig.me).
