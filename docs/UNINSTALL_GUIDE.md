@@ -10,7 +10,10 @@ sudo bash /opt/vpsmaster/installer/uninstall.sh
 It will ask you:
 
 Are you sure you want to uninstall VPSMaster? [y/N] -> type y
-Do you wish to purge all panel data `(/etc/vpsmaster, /opt/vpsmaster)`? [y/N] -> type y to wipe all files, databases, and logs.
+
+Do you wish to purge all panel data `(/etc/vpsmaster, /opt/vpsmaster)`? [y/N] -> type y
+to wipe all files, databases, and logs.
+
 Method 2: Complete Clean Manual Purge (Recommended if files were moved)
 
 To completely stop and remove all services, Nginx configurations, database files, and project directories in one go, run:
